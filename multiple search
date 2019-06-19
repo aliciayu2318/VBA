@@ -1,14 +1,13 @@
-Public Function FindName(arr As Range, c As Range, Col As Integer) As String
-   Dim rng As Range
+Public Function SHLogic(arr As Range, c As Range, Col As Integer) As String
    Dim Str As String
-   Dim a, ary
-   ary = Split(c.Text, " ")
+   Dim a, b
    a = Split(arr.Text, "|")
+   b = Split(c.Text, "|")
    Str = ""
-   For Each ary In arr
-       If ary Like "*" & a & "*" Then
-           Str = Str & ary & "| "
+   For Each b In arr
+       If b Like a Then
+           Str = Str & Cells(a.Row, Col).Value
        End If
    Next
-   FindName = Str
+   SHLogic = Str
 End Function
