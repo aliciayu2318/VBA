@@ -1,0 +1,21 @@
+'Extract shorthand
+Public Function Xtractor(r As Range) As String
+    Dim a, ary
+    ary = Split(r.Text, " ")
+    Xtractor = ""
+    For Each a In ary
+        If a Like "*14Q_Sch_E_*" Or a Like "*R_*" Then
+            If Not Xtractor Like "*" & a & "*" Then
+                Xtractor = a & "| " & Xtractor
+            End If
+        End If
+        
+        If a Like "R[0-9]*" Then
+            a = Left(a, InStr(a, "_") - 1)
+            If Not Xtractor Like "*" & a & "*" Then
+                Xtractor = a & "| " & Xtractor
+            End If
+        End If
+    Next a
+    
+End Function
