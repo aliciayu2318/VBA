@@ -1,0 +1,14 @@
+Public Function FindName(arr As Range, c As Range, Col As Integer) As String
+   Dim rng As Range
+   Dim Str As String
+   Dim a, ary
+   ary = Split(c.Text, " ")
+   a = Split(arr.Text, "|")
+   Str = ""
+   For Each ary In arr
+       If ary Like "*" & a & "*" Then
+           Str = Str & ary & "| "
+       End If
+   Next
+   FindName = Str
+End Function
