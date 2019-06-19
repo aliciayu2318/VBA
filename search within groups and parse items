@@ -1,0 +1,13 @@
+' search within groups and parse items
+' Parse RLI & Doc ID for each Data provider
+Public Function FindName(arr As Range, c As Range, Col As Integer) As String
+    Dim rng As Range
+    Dim Str As String
+    Str = ""
+    For Each rng In arr
+        If rng Like "*" & c & "*" And Not Str Like "*" & Cells(rng.Row, Col).Value & "*" Then
+            Str = Str & Cells(rng.Row, Col).Value & "| "
+        End If
+    Next
+    FindName = Str
+End Function
