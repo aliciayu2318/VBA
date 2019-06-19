@@ -1,12 +1,13 @@
 Public Function SHLogic(arr As Range, c As Range, Col As Integer) As String
+   Dim rng As Range
    Dim Str As String
    Dim a, b
    a = Split(arr.Text, "|")
    b = Split(c.Text, "|")
    Str = ""
    For Each b In arr
-       If b Like a Then
-           Str = Str & Cells(a.Row, Col).Value
+       If b Like " a " Then
+           Str = Str & Cells(rng.Row, Col).Value
        End If
    Next
    SHLogic = Str
