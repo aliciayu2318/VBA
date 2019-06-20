@@ -1,14 +1,12 @@
 Public Function SHLogic(arr As Range, c As Range, Col As Integer) As String
-   Dim rng As Range
+   Dim Temp As String
    Dim Str As String
    Dim a, b
-   a = Split(arr.Text, "|")
-   b = Split(c.Text, "|")
+   b = Split(c.Text, "| ")
    Str = ""
-   For Each b In arr
-       If b Like " a " Then
-           Str = Str & Cells(rng.Row, Col).Value
-       End If
-   Next
+   For Each a In b
+      Temp = Application.WorksheetFunction.VLookup(a, arr, Col, 0)
+      Str = Str & Temp
+   Next a
    SHLogic = Str
 End Function
