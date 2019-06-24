@@ -1,9 +1,24 @@
+'Version 1 
 Public Function Attr(arr As Range, c As Range) As String
    Dim rng As Range
    Dim Str As String
    Str = ""
    For Each rng In arr
        If c Like "*" & rng & "*" Then
+           Str = Str & rng.Value & "| "
+       End If
+   Next
+   Attr = Str
+End Function
+
+
+'Version 2
+Public Function Attr(arr As Range, c As Range) As String
+   Dim rng As Range
+   Dim Str As String
+   Str = ""
+   For Each rng In arr
+       If c Like "*" & rng & "*" And Not c Like "*" & "_" & rng & "*" Then
            Str = Str & rng.Value & "| "
        End If
    Next
