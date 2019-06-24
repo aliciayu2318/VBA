@@ -1,0 +1,10 @@
+Function RemoveDupes(txt As String, Optional delim As String = " ") As String
+    Dim x
+    With CreateObject("Scripting.Dictionary")
+        .CompareMode = vbTextCompare
+        For Each x In Split(txt, delim)
+            If Trim(x) <> "" And Not .exists(Trim(x)) Then .Add Trim(x), Nothing
+        Next
+        If .Count > 0 Then RemoveDupes = Join(.keys, delim)
+    End With
+End Function
