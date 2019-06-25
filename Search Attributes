@@ -83,7 +83,7 @@ Public Function Attr(arr As Range, c As Range) As String
    Dim Str As String
    Str = ""
    For Each rng In arr
-       If c Like "*" & "[.|( ]" & rng & "[<>= ]" & "*" Or c Like rng & "[<>= ]" & "*" Or c Like "*" & "[.|( ]" & rng Or c Like rng Then
+       If c Like "*" & "[.|( ]" & rng & "[<>= ]" & "*" Or c Like rng & "[<>= ]" & "*"  Then
                 Str = Str & rng.Value & "| "
        End If
    Next
