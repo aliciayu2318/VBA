@@ -41,3 +41,19 @@ Public Function Attr(arr As Range, c As Range) As String
    Attr = Str
 End Function
 
+
+'Version 4
+
+Public Function Attr(arr As Range, c As Range) As String
+   Dim rng As Range
+   Dim Str As String
+   Str = ""
+   For Each rng In arr
+       If c Like "*" & rng & "*" And ((c Like rng & "*") Or (c Like "*" & "[.,|,(]" & rng & "*") Or (c Like "*" & " " & rng & "*")) Then
+            If c Like "*" & rng & "[|, ,<,>,=,)]" & "*" Or c Like "*" & rng Then
+           Str = Str & rng.Value & "| "
+           End If
+       End If
+   Next
+   Attr = Str
+End Function
