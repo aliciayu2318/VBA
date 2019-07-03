@@ -1,0 +1,51 @@
+Public Function SHXtractor002(arr As Range, c As Range) As String
+   Dim rng As Range
+   Dim Str As String
+   Str = ""
+   For Each rng In arr
+        If c Like "*=  " & rng & " *" Then
+       
+                Str = Str & rng.Value & " | "
+       End If
+   Next
+   SHXtractor002 = Left(Str, Len(Str) - 3)
+   
+End Function
+
+Public Function SHLogic(arr As Range, c As Range, Col As Integer) As String
+   Dim Temp As String
+   Dim Str As String
+   Dim a, b
+   b = Split(c.Text, "| ")
+   Str = ""
+   For Each a In b
+      Temp = Application.WorksheetFunction.VLookup(a, arr, Col, 0)
+      Str = Str & " | " & Temp
+   Next a
+   SHLogic = Right(Str, Len(Str) - 3)
+   
+End Function
+
+Function RemoveDupes(txt As String, Optional delim As String = " ") As String
+    Dim x
+    With CreateObject("Scripting.Dictionary")
+        .CompareMode = vbTextCompare
+        For Each x In Split(txt, delim)
+            If Trim(x) <> "" And Not .exists(Trim(x)) Then .Add Trim(x), Nothing
+        Next
+        If .Count > 0 Then RemoveDupes = Join(.keys, delim)
+    End With
+End Function
+
+Public Function Attr(arr As Range, c As Range) As String
+   Dim rng As Range
+   Dim Str As String
+   Str = ""
+   For Each rng In arr
+       If c Like "*" & "[.|( ]" & rng & "[<>= M]" & "*" Or c Like rng & "[<>= ]" & "*" Then
+                Str = Str & rng.Value & "| "
+       End If
+       
+   Next
+    Attr = Str
+End Function
