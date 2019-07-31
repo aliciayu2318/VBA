@@ -1,0 +1,16 @@
+Public Function FindCount(arr As Range, c As Range, Col As Integer) As String
+   Dim rng As Range
+   Dim Str As String
+   Str = ""
+   Count = 0
+   List = ""
+   For Each rng In arr
+       If rng Like "*" & c & "*" And Not IsError(Application.Match(rng, List, False)) Then
+           'Count = Count + 1
+           List = List & rng
+           msg.box
+           leng = Count(List)
+       End If
+   Next
+   FindCount = leng
+End Function
