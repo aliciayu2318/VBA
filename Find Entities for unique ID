@@ -14,3 +14,22 @@ Public Function FindCount(arr As Range, c As Range, Col As Integer) As String
    Next
    FindCount = leng
 End Function
+
+
+
+Version 2
+
+Public Function FindCount(arr As Range, c As Range, Col As Integer) As String
+   Dim rng As Range
+   Dim Str As String
+   Dim list  As Variant
+   Str = ""
+   Count = 0
+   For Each rng In arr
+       If rng Like "*" & c & "*" And Cells(rng.Row, rng.Column - 1).Value <> Cells(rng.Row + 1, rng.Column - 1).Value Then
+           Count = Count + 1
+    
+       End If
+   Next
+   FindCount = Count
+End Function
