@@ -1,34 +1,14 @@
 Public Function FindCount(arr As Range, c As Range, Col As Integer) As String
    Dim rng As Range
    Dim Str As String
-   Str = ""
-   Count = 0
-   List = ""
-   For Each rng In arr
-       If rng Like "*" & c & "*" And Not IsError(Application.Match(rng, List, False)) Then
-           'Count = Count + 1
-           List = List & rng
-           msg.box
-           leng = Count(List)
-       End If
-   Next
-   FindCount = leng
-End Function
-
-
-
-Version 2
-
-Public Function FindCount(arr As Range, c As Range, Col As Integer) As String
-   Dim rng As Range
-   Dim Str As String
    Dim list  As Variant
    Str = ""
    Count = 0
    For Each rng In arr
-       If rng Like "*" & c & "*" And Cells(rng.Row, rng.Column - 1).Value <> Cells(rng.Row + 1, rng.Column - 1).Value Then
-           Count = Count + 1
-    
+       If rng Like "*" & c & "*" Then
+         If Not (Cells(rng.Row, rng.Column - 1).Value = Cells(rng.Row + 1, rng.Column - 1).Value And Cells(rng.Row + 1, rng.Column) Like "*" & c & "*") Then
+         Count = Count + 1
+         End If
        End If
    Next
    FindCount = Count
