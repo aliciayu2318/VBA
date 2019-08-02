@@ -1,0 +1,16 @@
+[Reports]
+FR Y_11
+FR Y_11S
+FR Y_9C
+FR Y_15
+FFIEC 002
+FR 2052a
+
+[Automated Solutions]
+Shorthandname extractor
+ShorthandLogic extractor
+Attribute extractor
+N/A document extractor
+Issue count tool
+PortfolioNodeName
+Unique list 
