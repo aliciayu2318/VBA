@@ -1,0 +1,28 @@
+Public Function Attr(arr As Range, c As Range) As String
+
+   Dim rng As Range
+   Dim Str As String
+  
+   Str = ""
+   For Each rng In arr
+       If LCase(c) Like "*" & "[.|( Chr(10)]" & LCase(rng) & "[<>= M-]" & "*" Or LCase(c) Like LCase(rng) & "[<>= ]" & "*" Then
+                Str = Str & rng.Value & "| "
+       End If
+   Next
+   Attr = Str
+End Function
+---------------------------------------
+Public Function Attrr(arr As Range, c As Range) As String
+
+   Dim rng As Range
+   Dim Str As String
+  
+   Str = ""
+   For Each rng In arr
+   cc = Replace(c, Chr(10), " ")
+       If LCase(cc) Like "*" & "[.|( ]" & LCase(rng) & "[<>= M-]" & "*" Or LCase(cc) Like LCase(rng) & "[<>= ]" & "*" Then
+                Str = Str & rng.Value & "| "
+       End If
+   Next
+   Attrr = Str
+End Function
