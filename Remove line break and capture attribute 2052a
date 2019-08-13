@@ -26,3 +26,30 @@ Public Function Attrr(arr As Range, c As Range) As String
    Next
    Attrr = Str
 End Function
+
+
+
+-----------
+Updates
+-----------
+Public Function Attrr(arr As Range, c As Range) As String
+
+   Dim rng As Range
+   Dim Str As String
+  
+   Str = ""
+   c1 = LCase(c)
+   c2 = Replace(c1, Chr(13), " ")
+    c3 = Replace(c2, Chr(10), " ")
+   For Each rng In arr
+
+       If LCase(c3) Like "*" & "[.|( ]" & LCase(rng) & "[<>=, ) -]" & "*" Then
+       'Or LCase(cc) Like LCase(rng) & "[<>)=, ]" & "*"
+                Str = Str & rng.Value & "| "
+                c4 = Replace(c3, LCase(rng), "")
+                c3 = c4
+       End If
+   Next
+   Attrr = Str
+End Function
+••••ˇˇˇˇ
