@@ -1,0 +1,13 @@
+Public Function CtryCode(r As Range) As String
+    Dim a, ary
+    ary = Split(r.Text, "AND")
+    CtryCode = ""
+    For Each a In r
+        If a Like "*gcr_fr_cp_dom_country_code =*" Or a Like "*ultimate_risk_country_derived =*" Or a Like "*gcrs_country_code =*" Then
+                a = Right((Left(a, InStr(a, "))") - 2)), 5)
+                
+                CtryCode = a
+            
+        End If
+    Next a
+End Function
